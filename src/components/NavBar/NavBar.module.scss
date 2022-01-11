@@ -1,3 +1,23 @@
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+a {
+  display: block;
+  text-decoration: inherit;
+  cursor: pointer;
+
+  &,
+  &:active,
+  &:hover,
+  &:visited {
+    color: inherit;
+  }
+}
+
 .navBar {
   width: 100%;
   position: fixed;
@@ -48,23 +68,13 @@
 
   div {
     display: flex;
+
     button {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        background: none;
-        margin-top: 4px;
-        margin-right: 15px;
+      margin-top: 4px;
+      margin-right: 15px;
     }
+
     a {
-      display: block;
-      text-decoration: inherit;
-      cursor: pointer;
-
-      &, &:active, &:hover, &:visited {
-        color: inherit;
-      }
-
       img {
         height: 17px;
       }
@@ -93,5 +103,171 @@
 }
 
 .aside {
+  padding: 9px 0;
 
+  ul {
+    height: 100%;
+    margin: 0;
+
+    li {
+      position: relative;
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+
+      & > * {
+        height: 100%;
+        padding: 0 5px;
+        font-size: 14px;
+        color: #333;
+        font-weight: 600;
+        line-height: 1;
+
+        @media (min-width: 1200px) {
+          padding: 0 10px;
+        }
+      }
+    }
+
+    @media (max-width: 767px) {
+      margin-top: -5px;
+    }
+  }
+}
+
+.searchButton {
+  position: relative;
+  margin-top: 5px;
+
+  @media (max-width: 767px) {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    margin: 0;
+  }
+}
+
+.notiButton {
+  position: relative;
+  margin-right: 10px;
+  margin-top: 5px;
+
+  @media (max-width: 767px) {
+    margin: 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    margin: 0;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    margin-right: 5px;
+  }
+}
+
+.profileButton {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  vertical-align: top;
+  padding: 0;
+  margin-right: 11px;
+
+  @media (max-width: 767px) {
+    margin-right: 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    margin-right: 0;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    margin-right: 0;
+  }
+}
+
+.profileBox {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 5px;
+
+  .profileButton {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    vertical-align: top;
+    padding: 0;
+    margin-right: 11px;
+
+    div {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #e1e2e3;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+
+      div {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-position: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+      margin-right: 0;
+    }
+  }
+}
+
+.leftDivision {
+  display: inline-flex !important;
+
+  &::before {
+    display: block;
+    content: "";
+    width: 1px;
+    height: 10px;
+    background-color: #e1e2e3;
+    margin: auto 10px;
+  }
+
+  .dashboardButton {
+    font-size: 13px;
+    color: #666;
+    line-height: 30px;
+    height: 30px;
+    border: 1px solid #e1e2e3;
+    border-radius: 15px;
+    padding: 0 10px;
+    margin-left: 15px;
+    font-weight: 400;
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+      margin: 0;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    margin: 0;
+  }
+}
+
+.menuButton {
+  margin-right: 10px;
+  padding-left: 10px !important;
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    margin-right: 0;
+  }
 }
