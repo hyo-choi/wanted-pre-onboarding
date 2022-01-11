@@ -49,5 +49,11 @@
       padding: 15px 0;
       font-size: 13px;
     }
+  } 
+
+  @media (max-width: 767px) {
+    &:first-child > a {
+      padding-left: 20px;
+    }
   }
 }
