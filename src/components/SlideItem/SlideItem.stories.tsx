@@ -15,7 +15,11 @@ export default {
   },
 } as ComponentMeta<typeof SlideItem>;
 
-const Template: ComponentStory<typeof SlideItem> = (args) => <SlideItem {...args} />;
+const Template: ComponentStory<typeof SlideItem> = (args) => (
+  <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <SlideItem {...args} />
+  </div>
+);
 
 export const Max = Template.bind({});
 Max.parameters = {

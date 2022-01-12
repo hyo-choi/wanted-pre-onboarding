@@ -20,13 +20,14 @@ const SlideItem = ({
   const [width] = useWindowSize();
   return (
     <div
-      className={classnames(styles.item, { [styles.active]: !hidden })}
+      className={styles.item}
       tabIndex={-1}
       aria-hidden={hidden}
+      style={{ width: `${width - 80}px` }}
     >
       <div>
         <div data-landing-url={url} data-link-kind={kind} data-content-title={title}>
-          <div>
+          <div className={classnames(styles.image, { [styles.active]: !hidden })}>
             <a href={url}>
               <img src={img} alt={title} />
             </a>

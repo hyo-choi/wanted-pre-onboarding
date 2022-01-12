@@ -2,13 +2,16 @@
   position: relative;
   display: block;
   float: left;
-  width: 1060px;
   height: 100%;
   min-height: 1px;
   outline: none;
 
   & > div {
-    margin: 0;
+    margin: 20px 10px;
+
+    @media (min-width: 1200px) {
+      margin: 0;
+    }
 
     & > div {
       width: 100%;
@@ -22,11 +25,6 @@
     height: 100%;
     border-radius: 4px;
     object-fit: cover;
-    filter: brightness(50%);
-  }
-
-  &.active img {
-    filter: brightness(100%);
   }
 
   @media (min-width: 1200px) {
@@ -34,6 +32,53 @@
     box-sizing: content-box;
   }
 }
+
+.image {
+  filter: brightness(50%);
+
+  &.active {
+    filter: brightness(100%);
+  }
+
+  a {
+    @media (max-width: 767px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    height: 183px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    height: 183px;
+    border-radius: 3px 3px 0 0;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    height: 183px;
+    border-radius: 3px 3px 0 0;
+  }
+}
+
 
 .information {
   text-align: center;
