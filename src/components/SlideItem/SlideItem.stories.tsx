@@ -10,9 +10,7 @@ export default {
     hidden: false,
     title: 'Git? GitHub?',
     description: '협업 필수 도구 마스터하기',
-    url: '/',
     img: 'https://static.wanted.co.kr/images/banners/1452/be4ec643.jpg',
-    index: 1,
     kind: 'EVENT_DETAIL',
   },
 } as ComponentMeta<typeof SlideItem>;

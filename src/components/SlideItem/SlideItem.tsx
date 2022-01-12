@@ -5,18 +5,17 @@ import useWindowSize from '../../hooks/useWindowSize';
 import NextArrow from '../../Icons/NextArrow';
 import styles from './SlideItem.module.scss';
 
-interface SlideItemProps {
-  index: number;
+export interface SlideItemProps {
   hidden?: boolean;
   title: string;
   description: string;
-  url: string;
+  url?: string;
   img: string;
   kind: 'EVENT_DETAIL' | 'CUSTOM_LINK';
 }
 
 const SlideItem = ({
-  index, hidden, title, description, url, img, kind,
+  hidden, title, description, url, img, kind,
 }: SlideItemProps) => {
   const [width] = useWindowSize();
   return (
@@ -24,7 +23,6 @@ const SlideItem = ({
       className={classnames(styles.item, { [styles.active]: !hidden })}
       tabIndex={-1}
       aria-hidden={hidden}
-      data-index={index}
     >
       <div>
         <div data-landing-url={url} data-link-kind={kind} data-content-title={title}>
@@ -56,6 +54,7 @@ const SlideItem = ({
 
 SlideItem.defaultProps = {
   hidden: true,
+  url: '/',
 };
 
 export default SlideItem;
