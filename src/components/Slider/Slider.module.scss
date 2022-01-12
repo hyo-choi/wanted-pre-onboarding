@@ -1,0 +1,70 @@
+.topBanner {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider {
+  margin-bottom: 0;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+
+  &>div {
+    padding: 0 50px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0;
+
+    &>div {
+      transition: transform 500ms ease 0s;
+      position: relative;
+      left: 0;
+      top: 0;
+      display: block;
+    }
+  }
+}
+
+.arrow {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 120px;
+  width: 30px;
+  height: 60px;
+  opacity: 0.5;
+  border-radius: 15px;
+  background-color: #fff;
+  font-size: 16px;
+
+  span {
+    width: 100%;
+    display: flex;
+    align-items: inherit;
+    justify-content: inherit;
+  }
+
+  svg {
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
+    flex-shrink: 0;
+    font-size: inherit;
+  }
+
+  &.prevArrow {
+    left: calc((100% - 1201px) / 2);
+  }
+
+  &.nextArrow {
+    right: calc((100% - 1200px) / 2);
+  }
+}

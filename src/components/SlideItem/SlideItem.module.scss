@@ -83,11 +83,6 @@
 .information {
   text-align: center;
 
-  &.active {
-    animation: information-animation .4s ease-in-out;
-    opacity: 1;
-  }
-
   h2 {
     margin-top: 20px;
     font-size: 18px;
@@ -136,6 +131,11 @@
   }
 
   @media (min-width: 1200px) {
+    &.active {
+      opacity: 1;
+      animation: information-animation .4s ease-in-out;
+    }
+
     position: absolute;
     bottom: 28px;
     width: 330px;

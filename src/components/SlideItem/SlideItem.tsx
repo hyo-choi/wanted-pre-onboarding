@@ -3,6 +3,7 @@ import React from 'react';
 import { MAX_WIDTH } from '../../constants/size';
 import useWindowSize from '../../hooks/useWindowSize';
 import NextArrow from '../../Icons/NextArrow';
+import { calcImageWidth } from '../../utils/calcWidth';
 import styles from './SlideItem.module.scss';
 
 export interface SlideItemProps {
@@ -23,13 +24,13 @@ const SlideItem = ({
       className={styles.item}
       tabIndex={-1}
       aria-hidden={hidden}
-      style={{ width: `${width >= MAX_WIDTH ? 1060 : width - 80}px` }}
+      style={{ width: `${calcImageWidth(width)}px` }}
     >
       <div>
         <div data-landing-url={url} data-link-kind={kind} data-content-title={title}>
           <div className={classnames(styles.image, { [styles.active]: !hidden })}>
-            <a href={url}>
-              <img src={img} alt={title} />
+            <a href={url} draggable={false}>
+              <img src={img} alt={title} draggable={false} />
             </a>
           </div>
           <div className={classnames(styles.information, { [styles.active]: !hidden })}>

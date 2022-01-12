@@ -1,0 +1,8 @@
+.main {
+  display: block;
+
+  @media (min-width: 1200px) {
+    height: auto;
+    padding-top: 25px;
+  }
+}
