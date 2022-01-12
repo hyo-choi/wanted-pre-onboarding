@@ -23,7 +23,7 @@ const SlideItem = ({
       className={styles.item}
       tabIndex={-1}
       aria-hidden={hidden}
-      style={{ width: `${width - 80}px` }}
+      style={{ width: `${width >= MAX_WIDTH ? 1060 : width - 80}px` }}
     >
       <div>
         <div data-landing-url={url} data-link-kind={kind} data-content-title={title}>
