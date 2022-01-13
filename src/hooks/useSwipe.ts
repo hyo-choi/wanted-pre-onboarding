@@ -31,16 +31,17 @@ const useSwipe = ({
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (isMoved || start === INIT) {
+    if (isMoved) {
       setStart(INIT);
       setEnd(INIT);
       return;
+    } if (!isMoved && start === INIT) {
+      setStart(e.targetTouches[0].clientX);
     }
     setEnd(e.targetTouches[0].clientX);
   };
 
   const handleTouchEnd = () => {
-    console.log(isMoved, start, end, start - end);
     setStart(INIT);
     setEnd(INIT);
     if (isMoved) return;
@@ -51,7 +52,6 @@ const useSwipe = ({
       goPrev();
     }
     setMovedTimer();
-    // FIXME: 가끔 역행하는데 왜그러지? 필요없을 때 0으로 초기화되는게 문제인듯
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -67,10 +67,12 @@ const useSwipe = ({
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (isMoved || start === INIT) {
+    if (isMoved) {
       setStart(INIT);
       setEnd(INIT);
       return;
+    } if (!isMoved && start === INIT) {
+      setStart(e.clientX);
     }
     if (isMouseDown) setEnd(e.clientX);
   };
