@@ -40,6 +40,10 @@
     filter: brightness(100%);
   }
 
+  &.preventHref a {
+    pointer-events: none; 
+  }
+
   a {
     @media (max-width: 767px) {
       display: flex;

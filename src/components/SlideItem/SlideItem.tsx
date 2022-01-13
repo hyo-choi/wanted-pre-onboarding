@@ -7,6 +7,7 @@ import { calcImageWidth } from '../../utils/calcWidth';
 import styles from './SlideItem.module.scss';
 
 export interface SlideItemProps {
+  preventHref?: boolean;
   edge?: boolean;
   hidden?: boolean;
   title: string;
@@ -17,7 +18,7 @@ export interface SlideItemProps {
 }
 
 const SlideItem = ({
-  edge, hidden, title, description, url, img, kind,
+  preventHref, edge, hidden, title, description, url, img, kind,
 }: SlideItemProps) => {
   const [width] = useWindowSize();
   return (
@@ -29,7 +30,10 @@ const SlideItem = ({
     >
       <div>
         <div data-landing-url={url} data-link-kind={kind} data-content-title={title}>
-          <div className={classnames(styles.image, { [styles.active]: !hidden })}>
+          <div className={classnames(styles.image, {
+            [styles.active]: !hidden, [styles.preventHref]: preventHref,
+          })}
+          >
             <a href={url} draggable={false}>
               <img src={img} alt={title} draggable={false} />
             </a>
@@ -59,6 +63,7 @@ const SlideItem = ({
 };
 
 SlideItem.defaultProps = {
+  preventHref: false,
   edge: false,
   hidden: true,
   url: '/',

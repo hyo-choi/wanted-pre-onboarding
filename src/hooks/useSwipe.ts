@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SWIPE_X = 75;
+export const SWIPE_X = 75;
 
 const useSwipe = (goPrev: Function, goNext: Function, setTimer: Function, clearTimer: Function) => {
   const [isMouseDown, setMouseDown] = useState(false);

@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { MAX_WIDTH } from '../../constants/size';
 import slideContent from '../../constants/slide';
 import useSlider from '../../hooks/useSlider';
-import useSwipe from '../../hooks/useSwipe';
+import useSwipe, { SWIPE_X } from '../../hooks/useSwipe';
 import useWindowSize from '../../hooks/useWindowSize';
 import NextArrow from '../../Icons/NextArrow';
 import PrevArrow from '../../Icons/PrevArrow';
@@ -63,6 +63,7 @@ const Slider = () => {
                 kind={kind}
                 hidden={idx !== selected}
                 edge={!isAnimating}
+                preventHref={diff > SWIPE_X || diff < -SWIPE_X}
               />
             ))}
             {slideContent.slice(0, 2).map(({
