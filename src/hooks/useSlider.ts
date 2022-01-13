@@ -76,9 +76,23 @@ const useSlider = ({
     setTotalWidth(calcTotalWidth(width, content));
   }, [width]);
 
+  const handler = () => {
+    if (document.visibilityState === 'hidden') {
+      clearTimer();
+      setAnimating(false);
+      return;
+    }
+    setTimer();
+    setAnimating(true);
+  };
+
   useEffect(() => {
     setTimer();
-    return () => clearTimer();
+    document.addEventListener('visibilitychange', handler);
+    return () => {
+      document.removeEventListener('visibilityChange', handler);
+      clearTimer();
+    };
   }, []);
 
   return {
