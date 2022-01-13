@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 button {
   margin: 0;
   padding: 0;
@@ -22,7 +29,8 @@ a {
   width: 100%;
   position: fixed;
   background-color: #fff;
-  box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
+  -webkit-box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
+          box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
   z-index: 100;
   padding-right: initial;
 }
@@ -55,18 +63,33 @@ a {
 }
 
 .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .navTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 
   div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 
     button {
@@ -96,9 +119,15 @@ a {
 
 .menu {
   @media (min-width: 992px) and (max-width: 1100px) {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-evenly;
-    flex: 1 1;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1;
+            flex: 1 1;
   }
 }
 
@@ -168,9 +197,15 @@ a {
 
 .profileButton {
   height: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   vertical-align: top;
   padding: 0;
   margin-right: 11px;
@@ -189,16 +224,29 @@ a {
 }
 
 .profileBox {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-right: 5px;
 
   .profileButton {
     height: 32px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     vertical-align: top;
     padding: 0;
     margin-right: 11px;
@@ -209,9 +257,15 @@ a {
       border-radius: 50%;
       border: 1px solid #e1e2e3;
       background-color: #fff;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       overflow: hidden;
 
       div {
@@ -231,6 +285,8 @@ a {
 }
 
 .leftDivision {
+  display: -webkit-inline-box !important;
+  display: -ms-inline-flexbox !important;
   display: inline-flex !important;
 
   &::before {
@@ -289,11 +345,17 @@ a {
   top: -2px;
   left: 25px;
   padding: 0 !important;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
   width: 13px;
   height: 13px !important;
   background: #36f;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border-radius: 5px;
 }
