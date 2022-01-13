@@ -7,6 +7,7 @@ import { calcImageWidth } from '../../utils/calcWidth';
 import styles from './SlideItem.module.scss';
 
 export interface SlideItemProps {
+  edge?: boolean;
   hidden?: boolean;
   title: string;
   description: string;
@@ -16,7 +17,7 @@ export interface SlideItemProps {
 }
 
 const SlideItem = ({
-  hidden, title, description, url, img, kind,
+  edge, hidden, title, description, url, img, kind,
 }: SlideItemProps) => {
   const [width] = useWindowSize();
   return (
@@ -33,7 +34,10 @@ const SlideItem = ({
               <img src={img} alt={title} draggable={false} />
             </a>
           </div>
-          <div className={classnames(styles.information, { [styles.active]: !hidden })}>
+          <div className={
+            classnames(styles.information, { [styles.active]: !hidden, [styles.edge]: edge })
+          }
+          >
             <h2>{title}</h2>
             <h3>{description}</h3>
             {(width >= MAX_WIDTH) && <hr />}
@@ -55,6 +59,7 @@ const SlideItem = ({
 };
 
 SlideItem.defaultProps = {
+  edge: false,
   hidden: true,
   url: '/',
 };

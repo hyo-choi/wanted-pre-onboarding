@@ -20,7 +20,9 @@
     margin: 0;
 
     &>div {
-      transition: transform 500ms ease 0s;
+      &.transition {
+        transition: transform 500ms ease 0s;
+      }
       position: relative;
       left: 0;
       top: 0;

@@ -79,7 +79,6 @@
   }
 }
 
-
 .information {
   text-align: center;
 
@@ -133,7 +132,9 @@
   @media (min-width: 1200px) {
     &.active {
       opacity: 1;
-      animation: information-animation .4s ease-in-out;
+      &:not(.edge) {
+        animation: information-animation 0.4s ease-in-out;
+      }
     }
 
     position: absolute;
