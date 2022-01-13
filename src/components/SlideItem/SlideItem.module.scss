@@ -41,7 +41,7 @@
   }
 
   &.preventHref a {
-    pointer-events: none; 
+    pointer-events: none;
   }
 
   a {
@@ -85,6 +85,14 @@
 
 .information {
   text-align: center;
+
+  a,
+  a:active,
+  a:hover,
+  a:visited {
+    color: #36f;
+    text-decoration: inherit;
+  }
 
   h2 {
     margin-top: 20px;
