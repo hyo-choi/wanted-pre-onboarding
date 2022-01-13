@@ -24,8 +24,6 @@ const SlideItem = ({
   return (
     <div
       className={styles.item}
-      tabIndex={-1}
-      aria-hidden={hidden}
       style={{ width: `${calcImageWidth(width)}px` }}
     >
       <div>
