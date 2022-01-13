@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+<h1>원티드 프리온보딩 코스<br />
+프론트엔드 선발 과제</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🚀 배포
 
-## Available Scripts
+🔗 **과제물**(Netlify): [https://pre-onboarding-hyo-choi.netlify.app/](https://pre-onboarding-hyo-choi.netlify.app/)
 
-In the project directory, you can run:
+🔗 **Storybook**: [https://main--61df0caa24fa0d004afe84fa.chromatic.com/](https://main--61df0caa24fa0d004afe84fa.chromatic.com/)
 
-### `yarn start`
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🧰 기술 스택
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9bbb7ca1-7465-40de-9ebb-ec2b402af0d6/deploy-status)](https://app.netlify.com/sites/pre-onboarding-hyo-choi/deploys) <br />
+![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![SASS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![Storybook](https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Netlify를 통해 과제를 배포했습니다.
+- React에서 Typescript 기반으로 개발했습니다.
+  - wanted에 문의하여 Typescript 사용 가능 여부를 확인한 후 진행했습니다.
+- CSS module과 SASS를 이용해 스타일링했습니다.
+- Storybook을 통해 반응형 UI를 개발하고 Chromatic으로 배포했습니다.
+- commit convention으로 [gitmoji](https://gitmoji.dev/)를 이용했습니다.
 
-### `yarn test`
+<br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📁 디렉토리 구조
+```bash
+.
+├── public
+└── src
+    ├── Icons
+    ├── components     # 컴포넌트 목록
+    │   ├── MenuItem  # GNB 내부 컴포넌트
+    │   ├── NavBar    # GNB 컴포넌트
+    │   ├── SlideItem # Carousel 내부 컴포넌트
+    │   └── Slider    # Carousel 컴포넌트
+    ├── constants
+    ├── hooks     # custom hooks
+    └── utils
+```
 
-### `yarn build`
+<br />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📚 Etc.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [개발 중 마주친 이슈들과 해결/구현 방법 기록](https://github.com/hyo-choi/wanted-pre-onboarding/issues?q=is%3Aissue+is%3Aclosed)
