@@ -1,62 +1,23 @@
+import React from 'react';
 import classnames from 'classnames';
-import React, {
-  useCallback, useEffect, useRef, useState,
-} from 'react';
 import { MAX_WIDTH } from '../../constants/size';
 import slideContent from '../../constants/slide';
-import useSwipe from '../../hooks/useSwipe';
+import useSlider from '../../hooks/useSlider';
+import useSwipe, { SWIPE_X } from '../../hooks/useSwipe';
 import useWindowSize from '../../hooks/useWindowSize';
 import NextArrow from '../../Icons/NextArrow';
 import PrevArrow from '../../Icons/PrevArrow';
-import { calcRotation, calcTotalWidth } from '../../utils/calcWidth';
+import { calcRotation } from '../../utils/calcWidth';
 import SlideItem from '../SlideItem/SlideItem';
 import styles from './Slider.module.scss';
 
-const getRandomIndex = (): number => Math.floor(Math.random() * slideContent.length);
-const firstItem = slideContent[0];
-const lastItem = slideContent[slideContent.length - 1];
-
 const Slider = () => {
   const [width] = useWindowSize();
-  const timer = useRef<ReturnType<typeof setInterval> >();
-  const [isMoved, setMoved] = useState(false);
-  const [selected, setSelected] = useState(0);
-  const [totalWidth, setTotalWidth] = useState(calcTotalWidth(width, slideContent));
 
-  const goNext = useCallback(() => {
-    setSelected((prev) => (prev === slideContent.length - 1 ? 0 : prev + 1));
-  }, [selected]);
-
-  const goPrev = useCallback(() => {
-    setSelected((prev) => (prev === 0 ? slideContent.length - 1 : prev - 1));
-  }, [selected]);
-
-  const setTimer = useCallback(() => {
-    timer.current = setInterval(() => {
-      goNext();
-    }, 5000);
-  }, [timer, selected, goNext]);
-
-  const clearTimer = useCallback(() => {
-    clearInterval(timer.current as unknown as number);
-  }, [timer]);
-
-  const setMovedTimer = useCallback(() => {
-    setMoved(true);
-    setTimeout(() => {
-      setMoved(false);
-    }, 600);
-  }, [isMoved]);
-
-  const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
-    if (isMoved) return;
-
-    clearTimer();
-    if (e.currentTarget.name === 'prev') goPrev();
-    else goNext();
-    setTimer();
-    setMovedTimer();
-  }, [width, selected, timer, isMoved]);
+  const {
+    goPrev, goNext, setTimer, clearTimer, setMovedTimer,
+    isAnimating, totalWidth, handleClick, selected, isMoved,
+  } = useSlider({ content: slideContent, width });
 
   const {
     handleTouchStart, handleTouchMove, handleTouchEnd,
@@ -65,16 +26,6 @@ const Slider = () => {
   } = useSwipe({
     goPrev, goNext, setTimer, clearTimer, isMoved, setMovedTimer,
   });
-
-  useEffect(() => {
-    setTotalWidth(calcTotalWidth(width, slideContent));
-  }, [width]);
-
-  useEffect(() => {
-    setTimer();
-    setSelected(getRandomIndex());
-    return () => clearTimer();
-  }, []);
 
   return (
     <div className={styles.topBanner}>
@@ -89,15 +40,21 @@ const Slider = () => {
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseLeave}
+            className={classnames({ [styles.transition]: isAnimating })}
             style={{ width: `${totalWidth}px`, transform: `translate3d(${-calcRotation(width, selected) - diff}px, 0px, 0px)` }}
           >
-            <SlideItem
-              key={lastItem.title}
-              title={lastItem.title}
-              description={lastItem.description}
-              img={lastItem.img}
-              kind={lastItem.kind}
-            />
+            {slideContent.slice(slideContent.length - 2).map(({
+              title, description, img, kind,
+            }, idx) => (
+              <SlideItem
+                key={title}
+                title={title}
+                description={description}
+                img={img}
+                kind={kind}
+                hidden={idx - 2 !== selected}
+              />
+            ))}
             {slideContent.map(({
               title, description, img, kind,
             }, idx) => (
@@ -108,15 +65,22 @@ const Slider = () => {
                 img={img}
                 kind={kind}
                 hidden={idx !== selected}
+                edge={!isAnimating}
+                preventHref={diff > SWIPE_X || diff < -SWIPE_X}
               />
             ))}
-            <SlideItem
-              key={firstItem.title}
-              title={firstItem.title}
-              description={firstItem.description}
-              img={firstItem.img}
-              kind={firstItem.kind}
-            />
+            {slideContent.slice(0, 2).map(({
+              title, description, img, kind,
+            }, idx) => (
+              <SlideItem
+                key={title}
+                title={title}
+                description={description}
+                img={img}
+                kind={kind}
+                hidden={idx + slideContent.length !== selected}
+              />
+            ))}
           </div>
         </div>
       </div>

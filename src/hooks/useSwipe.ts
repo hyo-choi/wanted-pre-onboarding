@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SWIPE_X = 75;
+export const SWIPE_X = 75;
 const INIT = -1;
 
 interface SwipeHookArgs {
