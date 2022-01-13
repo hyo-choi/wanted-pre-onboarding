@@ -86,12 +86,12 @@ const Slider = () => {
       </div>
       {(width >= MAX_WIDTH) && (
         <>
-          <button type="button" name="prev" className={classnames(styles.arrow, styles.prevArrow)} onClick={handleClick}>
+          <button type="button" name="prev" aria-label="slide-prev" className={classnames(styles.arrow, styles.prevArrow)} onClick={handleClick}>
             <span>
               <PrevArrow />
             </span>
           </button>
-          <button type="button" name="next" className={classnames(styles.arrow, styles.nextArrow)} onClick={handleClick}>
+          <button type="button" name="next" aria-label="slide-next" className={classnames(styles.arrow, styles.nextArrow)} onClick={handleClick}>
             <span>
               <NextArrow />
             </span>

@@ -24,7 +24,7 @@ const SlideItem = ({
   return (
     <div
       className={styles.item}
-      tabIndex={-1}
+      tabIndex={hidden ? -1 : 0}
       aria-hidden={hidden}
       style={{ width: `${calcImageWidth(width)}px` }}
     >
@@ -34,7 +34,12 @@ const SlideItem = ({
             [styles.active]: !hidden, [styles.preventHref]: preventHref,
           })}
           >
-            <a href={url} draggable={false}>
+            <a
+              href={url}
+              draggable={false}
+              aria-hidden={hidden}
+              tabIndex={hidden ? -1 : 0}
+            >
               <img src={img} alt={title} draggable={false} />
             </a>
           </div>
@@ -45,7 +50,12 @@ const SlideItem = ({
             <h2>{title}</h2>
             <h3>{description}</h3>
             {(width >= MAX_WIDTH) && <hr />}
-            <a href={url} className={styles.directButton}>
+            <a
+              href={url}
+              className={styles.directButton}
+              aria-hidden={hidden}
+              tabIndex={hidden ? -1 : 0}
+            >
               <span className={styles.buttonLabel}>
                 바로가기
                 <span>
