@@ -12,24 +12,16 @@ import { calcRotation, calcTotalWidth } from '../../utils/calcWidth';
 import SlideItem from '../SlideItem/SlideItem';
 import styles from './Slider.module.scss';
 
+const getRandomIndex = (): number => Math.floor(Math.random() * slideContent.length);
 const firstItem = slideContent[0];
 const lastItem = slideContent[slideContent.length - 1];
 
 const Slider = () => {
   const [width] = useWindowSize();
   const timer = useRef<ReturnType<typeof setInterval> >();
+  const [isMoved, setMoved] = useState(false);
   const [selected, setSelected] = useState(0);
   const [totalWidth, setTotalWidth] = useState(calcTotalWidth(width, slideContent));
-
-  const setTimer = useCallback(() => {
-    timer.current = setInterval(() => {
-      setSelected((prev) => (prev === slideContent.length - 1 ? 0 : prev + 1));
-    }, 5000);
-  }, [timer, selected]);
-
-  const clearTimer = useCallback(() => {
-    clearInterval(timer.current as unknown as number);
-  }, [timer]);
 
   const goNext = useCallback(() => {
     setSelected((prev) => (prev === slideContent.length - 1 ? 0 : prev + 1));
@@ -39,18 +31,40 @@ const Slider = () => {
     setSelected((prev) => (prev === 0 ? slideContent.length - 1 : prev - 1));
   }, [selected]);
 
+  const setTimer = useCallback(() => {
+    timer.current = setInterval(() => {
+      goNext();
+    }, 5000);
+  }, [timer, selected, goNext]);
+
+  const clearTimer = useCallback(() => {
+    clearInterval(timer.current as unknown as number);
+  }, [timer]);
+
+  const setMovedTimer = useCallback(() => {
+    setMoved(true);
+    setTimeout(() => {
+      setMoved(false);
+    }, 600);
+  }, [isMoved]);
+
   const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isMoved) return;
+
     clearTimer();
     if (e.currentTarget.name === 'prev') goPrev();
     else goNext();
     setTimer();
-  }, [width, selected, timer]);
+    setMovedTimer();
+  }, [width, selected, timer, isMoved]);
 
   const {
     handleTouchStart, handleTouchMove, handleTouchEnd,
     handleMouseDown, handleMouseMove, handleMouseUp, handleMouseLeave,
     diff,
-  } = useSwipe(goPrev, goNext, setTimer, clearTimer);
+  } = useSwipe({
+    goPrev, goNext, setTimer, clearTimer, isMoved, setMovedTimer,
+  });
 
   useEffect(() => {
     setTotalWidth(calcTotalWidth(width, slideContent));
@@ -58,6 +72,7 @@ const Slider = () => {
 
   useEffect(() => {
     setTimer();
+    setSelected(getRandomIndex());
     return () => clearTimer();
   }, []);
 
