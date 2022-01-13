@@ -16,6 +16,7 @@ const useSlider = ({
   const [isAnimating, setAnimating] = useState(true);
   const [selected, setSelected] = useState(0);
   const [totalWidth, setTotalWidth] = useState(calcTotalWidth(width, content));
+  const [isMoved, setMoved] = useState(false);
 
   const setTimer = useCallback(() => {
     timer.current = setInterval(() => {
@@ -26,6 +27,13 @@ const useSlider = ({
   const clearTimer = useCallback(() => {
     clearInterval(timer.current as unknown as number);
   }, [timer]);
+
+  const setMovedTimer = useCallback(() => {
+    setMoved(true);
+    setTimeout(() => {
+      setMoved(false);
+    }, 600);
+  }, [isMoved]);
 
   const goNext = useCallback(() => {
     setSelected((prev) => {
@@ -54,11 +62,13 @@ const useSlider = ({
   }, [selected]);
 
   const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isMoved) return;
     clearTimer();
     if (e.currentTarget.name === 'prev') goPrev();
     else goNext();
     setTimer();
-  }, [width, selected, timer]);
+    setMovedTimer();
+  }, [width, selected, timer, isMoved]);
 
   useEffect(() => {
     setTotalWidth(calcTotalWidth(width, content));
@@ -74,10 +84,12 @@ const useSlider = ({
     goNext,
     setTimer,
     clearTimer,
+    setMovedTimer,
     handleClick,
     isAnimating,
     totalWidth,
     selected,
+    isMoved,
   };
 };
 
