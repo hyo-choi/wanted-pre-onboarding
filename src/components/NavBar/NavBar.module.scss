@@ -283,3 +283,17 @@ a {
     height: 110px;
   }
 }
+
+.badge {
+  position: absolute;
+  top: -2px;
+  left: 25px;
+  padding: 0 !important;
+  display: inline-flex;
+  width: 13px;
+  height: 13px !important;
+  background: #36f;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}

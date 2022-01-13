@@ -7,6 +7,7 @@ import { MIN_WIDTH, MIDDLE_WIDTH } from '../../constants/size';
 import Magnifier from '../../Icons/Magnifier';
 import Bell from '../../Icons/Bell';
 import More from '../../Icons/More';
+import Badge from '../../Icons/Badge';
 
 const NavBar = () => {
   const [width] = useWindowSize();
@@ -35,7 +36,10 @@ const NavBar = () => {
             <aside className={styles.aside}>
               <ul>
                 <li><button type="button" className={styles.searchButton} aria-label="searchButton"><Magnifier /></button></li>
-                <li><button type="button" className={styles.notiButton} aria-label="notiButton"><Bell /></button></li>
+                <li>
+                  <button type="button" className={styles.notiButton} aria-label="notiButton"><Bell /></button>
+                  <span className={styles.badge}><Badge /></span>
+                </li>
                 {width > MIDDLE_WIDTH ? (
                   <>
                     <li className={styles.profileBox}>
@@ -44,6 +48,7 @@ const NavBar = () => {
                           <div style={{ backgroundImage: 'url(https://lh3.googleusercontent.com/a/AATXAJyy36xjbBrONz-HvRc6c9wXSH4AUrw066MAnKnu=s96-c), url(https://static.wanted.co.kr/images/profile_default.png)' }} />
                         </div>
                       </button>
+                      <span className={styles.badge}><Badge /></span>
                     </li>
                     <li className={styles.leftDivision}>
                       <a className={styles.dashboardButton} href="/">기업 서비스</a>
