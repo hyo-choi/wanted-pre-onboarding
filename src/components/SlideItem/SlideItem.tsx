@@ -32,8 +32,13 @@ const SlideItem = ({
             [styles.active]: !hidden, [styles.preventHref]: preventHref,
           })}
           >
-            <a href={url} draggable={false}>
-              <img src={img} alt={title} draggable={false} />
+            <a href={url} draggable={false} onDragStart={(e) => e.preventDefault()}>
+              <img
+                src={img}
+                alt={title}
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
+              />
             </a>
           </div>
           <div className={
