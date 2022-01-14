@@ -2,9 +2,10 @@ import React, {
   useCallback, useEffect, useRef, useState,
 } from 'react';
 import { SlideItemProps } from '../components/SlideItem/SlideItem';
+import slideContent from '../constants/slide';
 import { calcTotalWidth } from '../utils/calcWidth';
 
-const getRandomIndex = () => Math.floor(Math.random() * 12);
+const getRandomIndex = () => Math.floor(Math.random() * slideContent.length);
 
 interface SliderHookProps {
   content: SlideItemProps[];
