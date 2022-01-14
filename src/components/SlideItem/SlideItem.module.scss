@@ -34,10 +34,12 @@
 }
 
 .image {
-  filter: brightness(50%);
+  -webkit-filter: brightness(50%);
+          filter: brightness(50%);
 
   &.active {
-    filter: brightness(100%);
+    -webkit-filter: brightness(100%);
+            filter: brightness(100%);
   }
 
   &.preventHref a {
@@ -145,7 +147,8 @@
     &.active {
       opacity: 1;
       &:not(.edge) {
-        animation: information-animation 0.4s ease-in-out;
+        -webkit-animation: information-animation 0.4s ease-in-out;
+                animation: information-animation 0.4s ease-in-out;
       }
     }
 
@@ -206,13 +209,25 @@
   }
 
   svg {
-    user-select: none;
+    -webkit-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
     width: 1em;
     height: 1em;
     display: inline-block;
     fill: currentColor;
     flex-shrink: 0;
     font-size: inherit;
+  }
+}
+
+@-webkit-keyframes information-animation {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
